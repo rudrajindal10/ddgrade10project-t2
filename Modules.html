@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouthConnect | Modules</title>
+    <style>
+        :root {
+            --bg-color: #05070a;
+            --card-bg: #0b1118;
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+            --primary: #8c52ff;
+            --secondary: #00e0ff;
+            --highlight: #ff007a;
+            --border-purple: #4c1d95;
+            --border-cyan: #0891b2;
+            --border-gray: #1e293b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            padding-bottom: 5rem;
+        }
+
+        /* --- 1. TOP NAVIGATION --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 4rem;
+            background-color: var(--bg-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(to right, var(--secondary), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover { color: white; }
+
+        .search-container {
+            background: #111827;
+            border: 1px solid #1f2937;
+            border-radius: 50px;
+            padding: 0.5rem 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            width: 280px;
+        }
+
+        .search-input {
+            background: transparent;
+            border: none;
+            color: white;
+            outline: none;
+            font-size: 0.9rem;
+            width: 100%;
+        }
+
+        .btn-login {
+            background: white;
+            color: black;
+            padding: 0.6rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        /* --- 2. HEADER & FILTERS --- */
+        .content-wrap {
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .header-section h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .header-section p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .filter-group {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            margin-bottom: 4rem;
+        }
+
+        .btn-filter {
+            background: #111827;
+            border: none;
+            color: var(--text-muted);
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .btn-filter.active {
+            background: var(--secondary);
+            color: #000;
+        }
+
+        /* --- 3. GRID & CARDS --- */
+        .module-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 1.5rem;
+            text-align: left;
+        }
+
+        .module-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 2.2rem;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            border: 2px solid transparent;
+            transition: transform 0.2s ease;
+            cursor: pointer;
+        }
+
+        .module-card:hover { transform: translateY(-5px); }
+
+        .border-interactive { border-color: var(--border-purple); }
+        .border-video { border-color: var(--border-cyan); }
+        .border-read { border-color: var(--border-gray); }
+
+        .icon-box {
+            width: 48px;
+            height: 48px;
+            background: #1e293b;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+        }
+
+        .type-tag {
+            position: absolute;
+            top: 1.8rem;
+            right: 1.8rem;
+            font-size: 0.65rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0.4rem 0.9rem;
+            border-radius: 50px;
+            background: rgba(17, 24, 39, 0.8);
+        }
+
+        .tag-interactive { color: var(--highlight); }
+        .tag-video { color: var(--secondary); }
+        .tag-read { color: var(--text-muted); }
+
+        .module-card h3 { font-size: 1.5rem; margin-bottom: 0.2rem; }
+        .module-card p { color: var(--text-muted); line-height: 1.6; font-size: 0.95rem; }
+
+        @media (max-width: 1024px) {
+            nav { padding: 1rem 2rem; }
+            .search-container { width: 200px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="Homepage.html" class="logo">YouthConnect</a>
+        <div class="nav-right">
+            <div class="nav-links">
+                <a href="#" class="nav-link">Modules</a>
+                <a href="#" class="nav-link">Workshops</a>
+            </div>
+            <div class="search-container">
+                <span style="opacity: 0.6;">🔍</span>
+                <input type="text" class="search-input" placeholder="Search...">
+            </div>
+            <a href="#" class="btn-login">Login</a>
+        </div>
+    </nav>
+
+    <div class="content-wrap">
+        <header class="header-section">
+            <h1>Skill-Building Modules</h1>
+            <p>Dive into our collection of resources designed to help you grow and succeed.</p>
+            
+            <div class="filter-group">
+                <button class="btn-filter active">All</button>
+                <button class="btn-filter">Video Series</button>
+                <button class="btn-filter">Interactive Module</button>
+                <button class="btn-filter">Short Read</button>
+            </div>
+        </header>
+
+        <div class="module-grid">
+            <div class="module-card border-interactive">
+                <div class="type-tag tag-interactive">Interactive Module</div>
+                <div class="icon-box">🏛️</div>
+                <div>
+                    <h3>Civic Engagement</h3>
+                    <p>How does local government actually work? Drag and drop roles to build your city council in this simulation.</p>
+                </div>
+            </div>
+
+            <div class="module-card border-video">
+                <div class="type-tag tag-video">Video Series</div>
+                <div class="icon-box">🧠</div>
+                <div>
+                    <h3>Mental Resilience</h3>
+                    <p>3-part series on handling academic pressure and social media stress. Featuring psychologist Dr. Anya Sharma.</p>
+                </div>
+            </div>
+
+            <div class="module-card border-read">
+                <div class="type-tag tag-read">Short Read</div>
+                <div class="icon-box">💼</div>
+                <div>
+                    <h3>The 'First Job' Guide</h3>
+                    <p>Everything you need to know about interviews, taxes, and rights as a young employee.</p>
+                </div>
+            </div>
+
+            <div class="module-card border-interactive">
+                <div class="type-tag tag-interactive">Interactive Module</div>
+                <div class="icon-box">📊</div>
+                <div>
+                    <h3>Budgeting Basics</h3>
+                    <p>An interactive game where you manage a monthly budget, make spending choices, and try to save for a goal.</p>
+                </div>
+            </div>
+
+            <div class="module-card border-video">
+                <div class="type-tag tag-video">Video Series</div>
+                <div class="icon-box">🎤</div>
+                <div>
+                    <h3>Public Speaking Confidence</h3>
+                    <p>Learn techniques to overcome stage fright and deliver compelling presentations in this short video course.</p>
+                </div>
+            </div>
+
+            <div class="module-card border-read">
+                <div class="type-tag tag-read">Short Read</div>
+                <div class="icon-box">💳</div>
+                <div>
+                    <h3>Understanding Credit</h3>
+                    <p>A quick read on what credit scores are, why they matter, and how to build a positive credit history.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
